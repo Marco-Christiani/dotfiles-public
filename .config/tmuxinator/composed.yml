@@ -1,0 +1,10 @@
+# /home/marco/.config/tmuxinator/composed.yml
+
+name: composed
+root: ~/
+
+# Controls whether the tmux session should be attached to automatically. Defaults to true.
+# attach: false
+
+windows:
+  - momentum:

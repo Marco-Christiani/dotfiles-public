@@ -1,0 +1,33 @@
+{
+    "jedi.enable": true,
+    "jedi.startupMessage": true,
+    "jedi.executable.command": "/home/marco/.local/bin/jedi-language-server",
+    "diagnostic.displayByAle": true,
+    "suggest.completionItemKindLabels": {
+        "method": "",
+        "function": "",
+        "constructor": "",
+        "field": "",
+        "variable": "",
+        "class": "",
+        "interface": "",
+        "module": "",
+        "property": "",
+        "unit": "unit",
+        "value": "val",
+        "enum": "",
+        "keyword": "keyword",
+        "snippet": "",
+        "color": "color",
+        "file": "",
+        "reference": "ref",
+        "folder": "",
+        "enum member": "",
+        "constant": "",
+        "struct": "",
+        "event": "event",
+        "operator": "",
+        "type_parameter": "type param",
+        "default": "v"
+    }
+}

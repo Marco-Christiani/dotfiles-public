@@ -1,0 +1,47 @@
+# /home/marco/.config/tmuxinator/ares.yml
+
+name: ares
+root: ~/
+
+# Controls whether the tmux session should be attached to automatically. Defaults to true.
+# attach: false
+
+windows:
+  - pairsml:
+      root: /home/marco/Github/pairs-ml-strategy
+      panes:
+        - pairs-ml-strategy:
+          - fixcondapml
+          - vim *.todo || vim
+  - ares:
+      root: /home/marco/Github/ares
+      panes:
+        - ares-dev:
+          - conda deactivate
+          - ca ares
+          - vim *.todo || vim
+  - ares-jobs:
+      layout: even-horizontal
+      root: /home/marco/Github/ares
+      panes:
+        - jesse:
+          - conda deactivate
+          - ca trend
+          - optuna-dashboard sqlite:///optuna_db.db --host 0.0.0.0 &> /dev/null &
+          - cd docker
+          - docker-compose up -d redis postgres
+          - cd ..
+          - jesse run
+        - ares-shell:
+          -
+  - momentum:
+      layout: even-horizontal
+      root: /home/marco/Github/overreaction-momentum
+      panes:
+        - momentum-dev:
+          - conda deactivate
+          - ca momentum
+          - vim *.todo || vim
+        - momentum-shell:
+          - conda deactivate
+          - ca momentum

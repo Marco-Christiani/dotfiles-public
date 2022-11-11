@@ -1,0 +1,212 @@
+# format = "[╭─](bold white)$hostname$kubernetes$directory$git_branch$git_commit$git_state$git_status$docker_context$package$golang$helm$java$cmake$julia$kotlin$nim$nodejs$ruby$rust$swift$terraform$aws$gcloud$azure $battery\n[╰─](bold white)"
+format = "[╭─](bold white)$hostname$kubernetes$directory$git_branch$git_commit$git_state$git_status$docker_context$package$golang$helm$java$cmake$julia$kotlin$nim$nodejs$ruby$rust$swift$terraform$aws$gcloud$azure $battery\n[╰](bold white)$character"
+
+# removed the following languages from the list that were causing noise:
+# 1. $lua
+right_format = "$conda$python $cmd_duration"
+command_timeout = 100 # ms
+
+[character]
+format = "$symbol"
+# success_symbol = "[➜](bold green)"
+# error_symbol = "[✖](bold red)"
+error_symbol = "─"
+success_symbol = "─"
+vimcmd_symbol = "[λ](bold green)" # Normal Mode
+vimcmd_replace_one_symbol = "[r](bold purple)"
+vimcmd_replace_symbol = "[R](bold blue)"
+vimcmd_visual_symbol = "[v](bold yellow)"
+
+[cmd_duration]
+min_time = 1000
+show_milliseconds = false
+format = "─ [$duration]($style)"
+style = "bold yellow"
+
+[java]
+symbol = "\ue256 "
+style = "red"
+format = "via [${symbol} (${version} )](208)($style)"
+disabled = true
+# symbol-old = "☕"
+
+[lua]
+style = "#7FFFD4"
+
+[cmake]
+symbol = "🌕"
+format = "via [${symbol} (${version} )]($style)"
+disabled = true
+
+[kubernetes]
+format = "context: [⎈ $context \\($namespace\\)](bold cyan) "
+disabled = false
+
+[memory_usage]
+format = "with$symbol [${ram} ${ram_pct}( | ${swap} ${swap_pct})]($style) "
+disabled = true
+threshold = -1
+symbol = "\uf85a "
+style = "bold dimmed green"
+# symbol-old = " "
+
+[gcloud]
+style = "blue"
+format = "[$symbol$account(\\($project\\))]($style) "
+symbol = "️G⅁:☁️"
+
+[aws]
+format = "[$symbol$profile(\\($region\\))]($style) "
+style = "bold yellow"
+symbol = "\ue33d  "
+# symbol-old = "∀⍵₷☁️☁️ "
+
+[package]
+format = "on [🎁 $version](208 bold) "
+symbol = "\uf8d6 "
+
+[docker_context]
+format = "docker: [🐋 $context](blue bold)"
+disabled = false
+symbol = "\uf308 "
+
+[directory]
+truncation_length = 2
+# truncation_symbol = "…/"
+# truncation_symbol = "../"
+fish_style_pwd_dir_length = 3
+
+[username]
+style_user = "blue bold"
+style_root = "red bold"
+format = "user: [$user]($style) "
+disabled = false
+show_always = true
+
+[time]
+disabled = true
+format = "[\\[ $time \\]]($style) "
+
+[hostname]
+ssh_only = false 
+format = "[$hostname](red) "
+# trim_at = "."
+disabled = false
+
+[status]
+style = "red"
+symbol = "💥 "
+format = "[\\[$symbol$status\\]]($style) "
+disabled = true
+
+[git_branch]
+always_show_remote = true
+style = "bold blue"
+symbol = "\uf418 "
+
+[git_status]
+ahead = "⇡🏎💨${count}"
+diverged = "⇕⇡😵${ahead_count}⇣${behind_count}"
+behind = "⇣😰${count}"
+conflicted = "🏳 "
+# untracked = "🤷"
+untracked = "?"
+stashed = "📦"
+# modified = "📝" # \u2707 tape drive/radioactive thing
+modified = "[\\(\u270e $count\\)](yellow) " # pencil outline
+# modified = "\u270e " # pencil outline
+staged = "[\\(++$count\\)](green)"
+# renamed = "👅"
+renamed = "[\\(\u2b94 $count\\)](green)" # 4 corner arrows
+deleted = "🗑 "
+
+[rust]
+format = "via [${symbol}(${version} )](208)($style)"
+symbol = "\ue7a8 "
+disabled = true
+
+[golang]
+format = "go: [🏎💨 $version](bold cyan) "
+symbol = "\ue627 "
+
+[helm]
+format = "helm: [⎈ $version](bold white) "
+
+[jobs]
+symbol = "+ "
+threshold = 4
+format = "background [$symbol$number]($style) "
+
+[terraform]
+format = "[🏎💨 $version$workspace]($style) "
+
+[battery]
+full_symbol = "🔋"
+charging_symbol = "🔌 "
+discharging_symbol = "⚡️"
+[[battery.display]]
+threshold = 10
+style = "bold red"
+
+[[battery.display]]
+threshold = 30
+style = "bold yellow"
+
+[[battery.display]]
+threshold = 100
+style = "bold green"
+
+[buf]
+symbol = "\uf49d "
+
+[c]
+symbol = "\ue61e "
+
+[conda]
+symbol = "\uf10c "
+format = "[$symbol$environment]($style)"
+disabled=false
+# symbol = " "
+ignore_base = false
+
+[dart]
+symbol = "\ue798 "
+
+[elixir]
+symbol = "\ue275 "
+
+[elm]
+symbol = "\ue62c "
+
+[haskell]
+symbol = "\ue777 "
+
+[hg_branch]
+symbol = "\uf418 "
+
+[julia]
+symbol = "\ue624 "
+
+[nim]
+symbol = "\uf6a4 "
+
+[nix_shell]
+symbol = "\uf2dc "
+
+[nodejs]
+symbol = "\ue718 "
+
+[python]
+symbol = "\ue235 "
+format = '[ ${symbol}${pyenv_prefix}${version}( $virtualenv)]($style)'
+
+[spack]
+symbol = "🅢 "
+
+[gcloud.region_aliases]
+us-central1 = "uc1"
+asia-northeast1 = "an1"
+
+[aws.region_aliases]
+ap-southeast-2 = "au"
+us-east-1 = "va"

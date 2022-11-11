@@ -1,0 +1,76 @@
+# /home/marco/.config/tmuxinator/work.yml
+
+name: work
+root: ~/
+
+# Optional tmux socket
+# socket_name: foo
+
+# Note that the pre and post options have been deprecated and will be replaced by
+# project hooks.
+
+# Project hooks
+
+# Runs on project start, always
+# on_project_start: command
+
+# Run on project start, the first time
+# on_project_first_start: command
+
+# Run on project start, after the first time
+# on_project_restart: command
+
+# Run on project exit ( detaching from tmux session )
+# on_project_exit: command
+
+# Run on project stop
+# on_project_stop: command
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+# pre_window: rbenv shell 2.0.0-p247
+
+# Pass command line options to tmux. Useful for specifying a different tmux.conf.
+# tmux_options: -f ~/.tmux.mac.conf
+
+# Change the command to call tmux.  This can be used by derivatives/wrappers like byobu.
+# tmux_command: byobu
+
+# Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
+# startup_window: editor
+
+# Specifies (by index) which pane of the specified window will be selected on project startup. If not set, the first pane is used.
+# startup_pane: 1
+
+# Controls whether the tmux session should be attached to automatically. Defaults to true.
+# attach: false
+
+windows:
+  - spotify: spt
+  - tasks:
+      layout: ccd3,380x68,0,0{152x68,0,0[152x20,0,0,31,152x18,0,21,32,152x28,0,40,33],227x68,153,0,30}
+      panes:
+        - tw-summary:
+          - watch --color -n 600 task rc._forcecolor=on summary
+        - tw-history:
+          - watch --color -n 600 task rc._forcecolor=on ghistory.daily
+        - tw-burndown:
+          - watch --color -n 600 task rc._forcecolor=on burndown.daily
+        - tw-tui:
+          - taskwarrior-tui
+  - allocation:
+      root: /home/marco/Github/portfolio-allocation
+      panes:
+        - allocation:
+          - fixcondapa
+          - vim
+  - pairsml:
+      root: /home/marco/Github/pairs-ml-strategy
+      panes:
+        - pairsml:
+          - fixcondapml
+          - vim
+  - scratch:
+      layout: even-horizontal
+      panes:
+        - 
+        - ipython
